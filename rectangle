@@ -1,0 +1,18 @@
+import java.io.*;
+public class rec {
+ public static void main(String args[]) throws Exception{
+  System.setOut(new PrintStream(new FileOutputStream("output.txt")));
+  System.out.println("width   lemgth   permiter area  ");
+  
+
+  for (int n = 1;n<11;n++){
+   for (int x = 1;x<11;x++){
+	int p = (2*n)+(2*x);
+	int a = n*x;
+	System.out.print(n+"       "+x+"        "+p+"       "+a);
+	System.out.println("");
+   } 
+  } 
+   
+ }
+}
