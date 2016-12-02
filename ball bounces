@@ -1,0 +1,97 @@
+import java.util.Scanner;
+
+public class BounceCalculator {
+
+    public static void main(String[] args){
+
+        Scanner input = new Scanner(System.in);
+
+        while (true){
+
+            int bounces,choice = 0;
+
+        double index,distance = 0,total = 0,height;
+
+        System.out.println("****************************");
+
+        System.out.println(" Bounce Calculator ");
+
+        System.out.println(" 1 = Continue ");
+
+        System.out.println(" 0 = Quit ");
+
+        System.out.println("****************************");
+
+        choice = input.nextInt();
+
+        if(choice==1){
+
+            System.out.println("How high is the ball going to be dropped from?");
+
+            height=input.nextInt();
+
+            System.out.println("How bouncy is the ball?");
+
+            index=input.nextDouble();
+
+            System.out.println("How many times is the ball allowed to bounce?");
+
+            bounces=input.nextInt();
+
+            distance=height;
+
+            total=total+height;
+
+            while(distance>0.000001 && bounces>0){ //Sets the restriants for the program
+
+                if(bounces==1){ //Formula for the last bounce
+
+                bounces=bounces-1;
+
+                height=height*index;
+
+                distance=height;
+
+                total=total+distance;
+					 System.out.println(distance);
+                System.out.println(total); 
+					 System.out.println("next bounce");
+                break;
+
+                }else{ //Normal formula for bounces
+
+                    bounces=bounces-1;
+
+                    height=height*index;
+
+                    distance=height;
+
+                    total=total+distance;
+
+                    total=total+distance;
+                     
+                }
+
+            }
+
+            if(distance<0.000001){
+
+                System.out.println("The distance is to low to compute...outputting distance travelled so far...");
+
+            }
+
+            System.out.println("The total distance the ball travled was " + total + " feet.");
+
+        }
+
+        if(choice==0){
+
+            break;
+
+       }
+
+    }
+
+}
+
+}
