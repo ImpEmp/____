@@ -1,0 +1,93 @@
+https://github.com/ImpEmp/____.git
+import java.util.*;
+import javax.swing.JOptionPane;
+import java.io.*;
+import java.lang.Math;
+import java.util.Random;
+public abstract class ___ {
+ 
+ public static void main(String[] args) {
+ Random rand = new Random();
+ int n = rand.nextInt((100 -1) + 1) + 1;
+ assert n > 50;
+  Scanner fileReader;
+  
+  try {
+   
+   fileReader = getFile();
+   
+  } catch(StackOverflowError e) {
+   
+   JOptionPane.showMessageDialog(null, "Who knew a single person could mess up so much");
+   return;
+  }
+  
+  if(fileReader == null)
+   return;
+  
+  JOptionPane.showMessageDialog(null, "I underestimated you.");
+  
+  double[] numbers;
+  
+  try {
+   
+   int size = Integer.parseInt(fileReader.nextLine().trim());
+   numbers = new double[size];
+   
+   for(int i = 0; i < size; i++) {
+    
+    if(fileReader.hasNextLine())
+     numbers[i] = Double.parseDouble(fileReader.nextLine().trim());
+    else
+     numbers[i] = 0;
+   }
+   
+  } catch(Exception e) {
+   
+   JOptionPane.showMessageDialog(null, "never mind I was perficly correct with my evaluation");
+   main(args);
+   return;
+  }
+    
+  double min = Double.MAX_VALUE, max = Double.MIN_VALUE, sum = 0, cnt = 0;
+  
+  for(double d : numbers) {
+   
+   if(d < min)
+    min = d;
+   if(d > max)
+    max = d;
+   
+   sum += d;
+   cnt++;
+  }
+  
+  if(min > max) {
+   
+   JOptionPane.showMessageDialog(null, "min is greater than the max. min should not be greater then max, what did you do.");
+   return;
+  }
+  
+  final double average = sum / cnt, range = max - min;
+  
+  JOptionPane.showMessageDialog(null, "analysis is as follows min: " + min + " max: " + max + "   range: " + range + "  sum: " + sum + "   average: " + average );
+ }
+ 
+ private static Scanner getFile() {
+  
+  try {
+   
+   String name = JOptionPane.showInputDialog(null, "Enter a filename please.");
+   return new Scanner(new File(name));
+  
+  } catch(FileNotFoundException e) {
+   
+   JOptionPane.showMessageDialog(null, "I can not analyse somthing that does not exist, try again");
+   return getFile();
+   
+  } catch(NullPointerException e) {
+   
+   return null;
+  }
+ }
+}
