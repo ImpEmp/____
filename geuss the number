@@ -1,0 +1,68 @@
+ import java.util.*;
+   import java.lang.Math;
+   import java.util.Random;
+   public class guss
+   {
+      public static void main(String args[])throws Exception
+      {
+		   
+         Random generator = new Random();
+         Scanner reader = new Scanner(System.in);
+		   Scanner in = new Scanner(System.in);
+         Scanner sc = new Scanner(System.in);
+         Random rand = new Random();
+         int r=0;
+         int n = rand.nextInt((100 -1) + 1) + 1;
+      		
+         int b = rand.nextInt((100 -1) + 1) + 1;
+         int x = 1;
+         int f = 0;
+         int o = 0;
+         int i;
+         int z = 1;
+      	int y = 100;
+         int c = 9;
+         int bounce = 10;
+         System.out.println(n);
+         while(r != n)
+         {
+            System.out.print("geuss");
+            r=sc.nextInt();
+            f++;
+            if (r > n){
+               System.out.println("to high");
+            }
+            else if (r < n){
+               System.out.println("to low");
+            }
+            else if (r == n){
+               System.out.println("good job");
+            }
+         }
+         System.out.println("yay");
+         System.out.println("you took "+f+" geusses");
+         System.out.println("now your turn");        
+      int randNum = 0;
+    int upperLimit = 100;
+    int lowerLimit = 1;
+    String myAnswer = "";
+
+    do {
+        randNum = rand.nextInt(upperLimit - lowerLimit + 1) + lowerLimit;
+        System.out.println("I think it's " + randNum);
+		  o++;
+        myAnswer = in.nextLine();   
+
+        if(myAnswer.equals("tl")) {  //too low
+            lowerLimit = randNum + 1;
+        } 
+        else if(myAnswer.equals("th")) { // too high
+            upperLimit = randNum - 1;
+        }   
+    }while(!myAnswer.equals("y"));
+
+    in.close();
+    System.out.println("thank god it finnaly works I took "+o+" geuss");
+     }  
+   }
+   
