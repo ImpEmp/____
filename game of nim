@@ -1,0 +1,75 @@
+   import java.util.*;//by Cameron Jenkins due the 10/11/2016
+   public class GameOfNimCameronJenkins// AP CompSci period 6.
+   {
+		static Random num = new Random ();
+      public static void main (String [] args)
+      {
+         Scanner in = new Scanner (System.in);
+         int holypile = num.nextInt(101-10) + 10;
+         int dave = num.nextInt(2);
+         int subtraction = holypile;
+         boolean turn = num.nextBoolean();   
+         System.out.println ("The number of stones at the start of the almighty pile is : " + holypile);//this is how many stones are at the beginning.
+         if (dave == 0)//this is the stimulated coin toss that desides if it plays smart of dumb.
+         {
+            System.out.println ("I am not going to hold anything back (smart mode), good luck.");
+         }
+         if (dave == 1)
+         {
+            System.out.println ("I have decided to givee you a chance (dumb mode).");
+         }     
+         while (holypile > 1)
+         {
+            if (turn == true)//this is the turn Generator.
+            {
+               System.out.println ("Your turn Pitiful human...");
+               System.out.printf ("how many do you take (less than " + holypile/2 + "): ");
+               subtraction = in.nextInt();
+               holypile -=subtraction;
+               System.out.println ("The number of the almighty pile is: " + holypile);
+               turn = false;
+            }
+            if (turn ==false)
+            {
+               System.out.println ("It is My turn now.");//this shows how many marbles are left.
+               if (dave == 0)
+               {  
+                  holypile = HAL(holypile);
+                  System.out.println ("The number left is " + holypile);
+               }
+                
+               if (dave == 1)
+               {
+                  holypile -= num.nextInt(holypile/2) + 1;
+                  System.out.println ("The number left is " + holypile);
+               }
+               turn = true;
+            }
+         }        
+         if (holypile <= 1)//this is how it displayes the winner.
+         {
+            if (turn = false)
+            {
+               System.out.println ("You Win, Thats suprising!");
+            }  
+            else
+            {
+               System.out.println ("You Have lost, Not suprising.");
+            }  
+         }
+      }
+      public static int HAL (int hpile)//this is how the computer choses the amount of marbles to remove.
+      {
+         int power = 2;        
+         while (power < hpile) 
+         { 
+            power *=2;
+         }
+         power /= 2;
+         int out = power-1;
+			
+			if(out < hpile / 2.0)
+				out = hpile - num.nextInt(hpile / 2) - 1;
+         return out;
+      }
+   }
