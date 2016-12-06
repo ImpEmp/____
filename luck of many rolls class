@@ -1,0 +1,31 @@
+ 	//Name:cameron    Date: jenkins
+   public class Dice
+   {
+      public int myOne, myTwo;
+      public Dice()
+      {
+         myOne = random();
+         myTwo = random();
+      }
+      public void roll()
+      {
+         myOne = random();
+         myTwo = random();
+      }
+      public int total()
+      {
+         return myOne+ myTwo;
+      }
+      public boolean doubles()
+      {
+         return myOne == myTwo;
+      }
+      public String toString()
+      {
+         return "{" + myOne + ", " + myTwo + "}";
+      }
+      private int random()
+      {
+         return (int)(Math.random() * 6 + 1);
+      }
+   }
