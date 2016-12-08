@@ -1,0 +1,20 @@
+   //Name cameron Date_____________
+   import java.io.*;
+	import java.util.random;
+	int z = rand.nextInt((5 -1) + 1) + 1;
+   public class Driver06b
+   {
+      public static void main(String[] args) throws Exception
+      {
+         System.setOut(new PrintStream(new FileOutputStream("output.txt")));
+         Shape[] shapes = new Shape [342];
+			for(int i
+			switch(z){
+			case:1
+			case:2
+			case:3
+			case:4
+			default: System.out.println("error.error experienced"); 
+			}
+      }
+   }
