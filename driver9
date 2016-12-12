@@ -1,0 +1,63 @@
+//Namecameron jenkins Date12/12/2016
+   import javax.swing.*;
+   import java.awt.*;
+   public class ScoreCard09 extends JPanel
+   {
+      private JTextField[] input;
+      public ScoreCard09()
+      {
+         setLayout(new GridLayout(2, 18));
+      
+         for(int x = 1; x <= 18; x++)
+         {
+            add(new JLabel("" + x, SwingConstants.CENTER));
+         }
+      
+         input = new JTextField[18];
+         for(int x = 0; x < input.length; x++)
+         {
+            input[x] = new JTextField();
+            add(input[x]);
+         }
+      }
+      public void randomize()
+      {
+         	for(int i = 0; i < input.length; i++){
+				input[i].setText(1+ (int)(Math.random()*8)+"");
+				}
+				
+				
+      }
+      public int findTotal()
+      {
+         	/************************/
+         	/*                      */
+         	/* Your code goes here. */
+         	/*                      */
+         	/************************/
+      }
+      public int findAces()
+      {
+         	int i = 0;
+				for(int x = 0; x< input.length;x++)
+				 if(input[x].getText().equals(""))
+				  i++:
+			return i;
+      }
+      public int findHardestHole()
+      {
+        int f;
+		  int max = 0;
+		  for(int i = 0; i < input.length; i++){
+		  	if(input[i].getText().equals("")){
+			 continue;
+		  	}
+			int x = Integer.parseInt.Input(i)));
+			if(x>max){
+			max=x;
+			f=i;
+			}
+		  }
+		  return f + 1;
+      }
+   }
