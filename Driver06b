@@ -1,20 +1,42 @@
-   //Name cameron Date_____________
+  //Name cameron Date_____________
    import java.io.*;
-	import java.util.random;
-	int z = rand.nextInt((5 -1) + 1) + 1;
+	import java.util.Random;
+
    public class Driver06b
    {
       public static void main(String[] args) throws Exception
       {
+             
+        			 	// remove the comment slashes 	
+      	Random rand = new Random();
+			int y = 342;
+		   
          System.setOut(new PrintStream(new FileOutputStream("output.txt")));
          Shape[] shapes = new Shape [342];
-			for(int i
-			switch(z){
-			case:1
-			case:2
-			case:3
-			case:4
-			default: System.out.println("error.error experienced"); 
+			int i = 0;
+			while(i != y){
+			i++;
+			int z = rand.nextInt((4 -1) + 1) + 1;
+			 switch (z){
+			  case 1: Circle c = new Circle(Math.random()*rand.nextInt((10000)));
+			  System.out.println(c);
+			  System.out.println(c.findArea());
+			    break;
+			  case 2: triangle t = new triangle(Math.random()*rand.nextInt((10000))); 
+			  System.out.println(t);
+			  System.out.println(t.findArea());
+			    break;
+			  case 3:rectangle r = new rectangle(Math.random()*rand.nextInt((10000)), Math.random()*rand.nextInt((10000)));
+			   System.out.println(r);
+				System.out.println(r.findArea());
+			    break;
+			  case 4: square s = new square(Math.random()*rand.nextInt((10000)));
+			  System.out.println(s);
+			  System.out.println(s.findArea());
+			    break;
+			  default: System.out.println("error.error experienced"); 
+			    break;
+			}
 			}
       }
    }
