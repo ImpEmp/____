@@ -1,4 +1,4 @@
-	//Namecameron jenkins Date12/12/2016
+//Namecameron jenkins Date12/12/2016
    import javax.swing.*;
    import java.awt.*;
    public class ScoreCard09 extends JPanel
@@ -46,11 +46,11 @@
       }
       public int findAces()
       {
-         int i = 0;
-         for(int x = 0; x< input.length;x++)
-            if(input[x].getText().equals(""))
-               i++;
-         return i;
+        int i = 0;
+       for (int x = 0; x < input.length; x++)
+        if (input[x].getText().equals("1"))
+         i++;
+       return i;
       }
       public int findHardestHole()
       {
