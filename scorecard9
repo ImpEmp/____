@@ -1,4 +1,4 @@
-//Namecameron jenkins Date12/12/2016
+	//Namecameron jenkins Date12/12/2016
    import javax.swing.*;
    import java.awt.*;
    public class ScoreCard09 extends JPanel
@@ -22,42 +22,50 @@
       }
       public void randomize()
       {
-         	for(int i = 0; i < input.length; i++){
-				input[i].setText(1+ (int)(Math.random()*8)+"");
-				}
-				
-				
+         for(int i = 0; i < input.length; i++){
+            input[i].setText(1+ (int)(Math.random()*8)+"");
+         }
+      		
+      		
       }
       public int findTotal()
       {
-         	/************************/
-         	/*                      */
-         	/* Your code goes here. */
-         	/*                      */
-         	/************************/
+         
+         int t = 0;
+         for(int i = 0; i < input.length; i++){
+            if(input[i].getText().equals("")){
+               continue;
+            }
+            int lot = Integer.parseInt(input[i].getText());
+           
+           t= lot+t;
+            
+         }
+      	
+         return t;
       }
       public int findAces()
       {
-         	int i = 0;
-				for(int x = 0; x< input.length;x++)
-				 if(input[x].getText().equals(""))
-				  i++:
-			return i;
+         int i = 0;
+         for(int x = 0; x< input.length;x++)
+            if(input[x].getText().equals(""))
+               i++;
+         return i;
       }
       public int findHardestHole()
       {
-        int f;
-		  int max = 0;
-		  for(int i = 0; i < input.length; i++){
-		  	if(input[i].getText().equals("")){
-			 continue;
-		  	}
-			int x = Integer.parseInt.Input(i)));
-			if(x>max){
-			max=x;
-			f=i;
-			}
-		  }
-		  return f + 1;
+         int f=0;
+         int max = 0;
+         for(int i = 0; i < input.length; i++){
+            if(input[i].getText().equals("")){
+               continue;
+            }
+            int x = Integer.parseInt(input[i].getText());
+            if(x>max){
+               max=x;
+               f=i;
+            }
+         }
+        return f + 1;
       }
    }
