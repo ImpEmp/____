@@ -1,0 +1,94 @@
+   //NameCameron Jenkins Date 12/14/2016
+   import javax.swing.*;
+   import java.awt.*;
+   public class ScoreCard13 extends JPanel
+   {
+      private JTextField[][] input;
+      public ScoreCard13()
+      {
+         setLayout(new GridLayout(5, 18));
+      
+         for(int hole = 1; hole <= 18; hole++)
+         {
+            add(new JLabel("" + hole, SwingConstants.CENTER));
+         }
+      
+         input = new JTextField[4][18];
+         for(int r = 0; r < input.length; r++)
+            for(int c = 0; c < input[0].length; c++)
+            {
+               input[r][c] = new JTextField();
+               add(input[r][c]);
+            }
+      }
+      public void randomize()
+      {
+         for(int i = 0; i < input.length; i++){
+            for(int c = 0; c< input[i].length; c++){
+               input[i][c].setText(1+ (int)(Math.random()*8)+"");
+            }
+         }
+      	
+      }
+      public int findTotal(int r)
+      {
+         {
+            int t = 0;
+            for(int i = 0; i < input.length; i++){
+               if(input[i][r].getText().equals("")){
+                  continue;
+               }
+               int lot = Integer.parseInt(input[r][i].getText());
+            
+               t= lot+t;
+            
+            }
+         
+            return t;
+         }
+      }
+      public int findAces(int r)
+      {
+         
+         int i = 0;
+         for(int x = 0; x< input[r].length;x++)
+            if(input[r][x].getText().equals("1"))
+               i++;
+                  
+         return i;
+         
+      }
+      public int findHardestHole(int r)
+      {
+         int f=0;
+         int max = 0;
+         for(int i = 0; i < input.length; i++){
+            if(input[i][r].getText().equals("")){
+               continue;
+            }
+            int x = Integer.parseInt(input[i][r].getText());
+            if(x>max){
+               max=x;
+               f=i;
+            }
+         }
+         return f + 1;
+      }
+      public int findHardestHole() {
+         int f = -1;
+         int max = 0;
+         for (int i = 0; i < input[0].length; i++) {
+            for(int r = 0; r < input.length; r++)
+               if (input[r][i].getText().equals(""))
+                  continue;
+            int x = 0;
+            for(int r = 0; r < input.length; r++)
+               x += Integer.parseInt(input[i][r].getText());
+            if (x > max) {
+               max = x;
+               f = i;
+            }
+         }
+         return f+1;
+      }
+   }
