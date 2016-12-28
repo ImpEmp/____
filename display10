@@ -1,0 +1,56 @@
+   //Name cameron jenkins Date 12/27/2016
+   import javax.swing.*;
+   import java.awt.*;
+   import java.lang.Object;
+   import java.util.Random;
+
+   public class Display10 extends JPanel
+   {
+   Random rand = new Random();
+      private JLabel[] bits;
+      public Display10()
+      {
+         setLayout(new GridLayout(1, 8));
+         bits = new JLabel[8];
+         for(int x = 0; x < bits.length; x++)
+         {
+            bits[x] = new JLabel("", SwingConstants.CENTER);
+            bits[x].setFont(new Font("Serif", Font.BOLD, 50));
+            add(bits[x]);
+         }
+         randomize();
+      }
+      public void randomize()
+      {
+         for(int i = 0; i < bits.length; i++){
+          bits[i].setText(rand.nextInt(2)+"");
+       }
+      }
+      public void reverse() {
+       for(int i = 0; i < bits.length / 2; i++)
+      {
+       in temp = Int.valueOf(bits[i]);
+       bits[i].setText(bits[bits.length - i - 1]+"");
+       bits[bits.length - i - 1].setText(String.valueOf(temp));
+        }
+      
+      
+      }
+      
+      public void shift()
+      {
+           	/************************/
+         	/*                      */
+         	/* Your code goes here. */
+         	/*                      */
+         	/************************/
+      }
+      public void rotate()
+      {
+           	/************************/
+         	/*                      */
+         	/* Your code goes here. */
+         	/*                      */
+         	/************************/
+      }
+   }
