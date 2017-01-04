@@ -1,4 +1,4 @@
-   //Name cameron jenkins Date 12/27/2016
+     //Name cameron jenkins Date 12/27/2016
    import javax.swing.*;
    import java.awt.*;
    import java.lang.Object;
@@ -8,10 +8,15 @@
    {
    Random rand = new Random();
       private JLabel[] bits;
+      private JLabel[] temp;
+
       public Display10()
       {
          setLayout(new GridLayout(1, 8));
          bits = new JLabel[8];
+          setLayout(new GridLayout(1, 8));
+         temp = new JLabel[1];
+         
          for(int x = 0; x < bits.length; x++)
          {
             bits[x] = new JLabel("", SwingConstants.CENTER);
@@ -27,30 +32,38 @@
        }
       }
       public void reverse() {
-       for(int i = 0; i < bits.length / 2; i++)
-      {
-       in temp = Int.valueOf(bits[i]);
-       bits[i].setText(bits[bits.length - i - 1]+"");
-       bits[bits.length - i - 1].setText(String.valueOf(temp));
-        }
-      
+      String a = bits[0].getText();
+      String b = bits[1].getText();
+      String c = bits[2].getText();
+      String d = bits[3].getText();
+      String e = bits[4].getText();
+      String f = bits[5].getText();
+      String g = bits[6].getText();
+      String h = bits[7].getText();
+      bits[7].setText(a);
+      bits[6].setText(b);
+      bits[5].setText(c);
+      bits[4].setText(d);
+      bits[3].setText(e);
+      bits[2].setText(f);
+      bits[1].setText(g);
+      bits[0].setText(h);
       
       }
       
       public void shift()
       {
-           	/************************/
-         	/*                      */
-         	/* Your code goes here. */
-         	/*                      */
-         	/************************/
+           	for(int i = bits.length - 1; i > 0; i--) {
+               bits[i].setText(bits[i-1].getText());
+            }
+            bits[0].setText("0");
       }
       public void rotate()
       {
-           	/************************/
-         	/*                      */
-         	/* Your code goes here. */
-         	/*                      */
-         	/************************/
+          String t = bits[bits.length-1].getText();
+            for(int i = bits.length - 1; i > 0; i--) {
+               bits[i].setText(bits[i-1].getText());
+            }
+            bits[0].setText(t);
       }
    }
