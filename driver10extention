@@ -1,0 +1,14 @@
+import javax.swing.JFrame;
+
+public class Driver10
+{
+  public static void main(String[] args)
+  {
+    JFrame frame = new JFrame("Unit4, Lab10: Binary Reversal");
+    frame.setSize(400, 150);
+    frame.setLocation(200, 100);
+    frame.setDefaultCloseOperation(3);
+    frame.setContentPane(new Panel10());
+    frame.setVisible(true);
+  }
+}
