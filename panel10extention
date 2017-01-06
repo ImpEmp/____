@@ -1,0 +1,93 @@
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Panel10 extends JPanel
+{
+  private Display10 display;
+  private JLabel decimal;
+
+  public Panel10()
+  {
+    setLayout(new BorderLayout());
+
+    this.display = new Display10();
+    add(this.display, "Center");
+
+    JPanel panel = new JPanel();
+    panel.setLayout(new FlowLayout());
+    add(panel, "South");
+
+    JButton button1 = new JButton("Randomize");
+    button1.addActionListener(new Panel10.Listener1(null));
+    panel.add(button1);
+
+    JButton button2 = new JButton("Reverse");
+    button2.addActionListener(new Panel10.Listener2(null));
+    panel.add(button2);
+
+    JButton button3 = new JButton("Shift");
+    button3.addActionListener(new Panel10.Listener3(null));
+    panel.add(button3);
+
+    JButton button4 = new JButton("Rotate");
+    button4.addActionListener(new Panel10.Listener4(null));
+    panel.add(button4);
+  }
+
+  private class Listener4
+    implements ActionListener
+  {
+    private Listener4()
+    {
+    }
+
+    public void actionPerformed(ActionEvent e)
+    {
+      Panel10.this.display.rotate();
+    }
+  }
+
+  private class Listener3
+    implements ActionListener
+  {
+    private Listener3()
+    {
+    }
+
+    public void actionPerformed(ActionEvent e)
+    {
+      Panel10.this.display.shift();
+    }
+  }
+
+  private class Listener2
+    implements ActionListener
+  {
+    private Listener2()
+    {
+    }
+
+    public void actionPerformed(ActionEvent e)
+    {
+      Panel10.this.display.reverse();
+    }
+  }
+
+  public class Listener1
+    implements ActionListener
+  {
+    private Listener1()
+    {
+    }
+
+    public void actionPerformed(ActionEvent e)
+    {
+      Panel10.this.display.randomize();
+    }
+  }
+}
