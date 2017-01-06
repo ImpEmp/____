@@ -1,0 +1,81 @@
+import java.awt.Font;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Display10 extends JPanel
+{
+  private JLabel[] bits;
+  private JLabel decimal;
+
+  public Display10()
+  {
+    setLayout(new GridLayout(1, 9));
+
+    this.bits = new JLabel[8];
+    for (int x = 0; x < this.bits.length; x++)
+    {
+      this.bits[x] = new JLabel("", 0);
+      this.bits[x].setFont(new Font("Serif", 1, 50));
+      add(this.bits[x]);
+    }
+    this.decimal = new JLabel("", 0);
+    add(this.decimal);
+    randomize();
+  }
+
+  public void randomize()
+  {
+    for (int x = 0; x < this.bits.length; x++)
+    {
+      this.bits[x].setText("" + (int)(Math.random() * 2.0D));
+    }
+    convert();
+  }
+
+  public void reverse() {
+    String[] array = new String[this.bits.length];
+    for (int x = 0; x < this.bits.length; x++)
+      array[x] = this.bits[x].getText();
+    for (int x = 0; x < this.bits.length; x++)
+      this.bits[x].setText(array[(this.bits.length - x - 1)]);
+    convert();
+  }
+
+  public void shift() {
+    for (int x = 0; x < this.bits.length - 1; x++)
+    {
+      this.bits[x].setText(this.bits[(x + 1)].getText());
+    }
+    this.bits[(this.bits.length - 1)].setText("0");
+    convert();
+  }
+
+  public void rotate() {
+    String temp = this.bits[0].getText();
+    for (int x = 0; x < this.bits.length - 1; x++)
+    {
+      this.bits[x].setText(this.bits[(x + 1)].getText());
+    }
+    this.bits[(this.bits.length - 1)].setText(temp);
+    convert();
+  }
+
+  private void convert()
+  {
+    int[] a = new int[8];
+    for (int x = 0; x < this.bits.length; x++)
+    {
+      a[x] = Integer.parseInt(this.bits[x].getText());
+    }
+    int p = 0;
+    double d = 0.0D;
+    for (int i = a.length - 1; i >= 0; i--)
+    {
+      if (a[i] == 1)
+        d += Math.pow(2.0D, p);
+      p++;
+    }
+    this.decimal.setText("" + d);
+  }
+}
