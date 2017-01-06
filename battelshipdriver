@@ -1,0 +1,15 @@
+
+   //Torbert, e-mail: mr@torbert.com, website: www.mr.torbert.com
+	//version 7.14.2003
+public class BattleshipDriver
+{
+  public static void main(String[] paramArrayOfString)
+  {
+    JFrame localJFrame = new JFrame("Unit4, Project: Battleship!");
+    localJFrame.setSize(400, 400);
+    localJFrame.setLocation(200, 100);
+    localJFrame.setDefaultCloseOperation(3);
+    localJFrame.setContentPane(new Battleship());
+    localJFrame.setVisible(true);
+  }
+}
