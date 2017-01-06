@@ -1,0 +1,148 @@
+//cameron JENKINS jan 6 2017
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Battleship extends JPanel
+{
+  private JButton[][] board;
+  private int[][] matrix;
+  private int hits;
+  private int torpedoes;
+  private JLabel label;
+  private JButton reset;
+
+  public Battleship()
+  {
+    setLayout(new BorderLayout());
+    this.hits = 0;
+    this.torpedoes = 20;
+
+    JPanel north = new JPanel();
+    north.setLayout(new FlowLayout());
+    add(north, "North");
+    this.label = new JLabel("You have 20 torpedoes.");
+    north.add(this.label);
+
+    JPanel center = new JPanel();
+    center.setLayout(new GridLayout(10, 10));
+    add(center, "Center");
+    this.board = new JButton[10][10];
+    this.matrix = new int[10][10];
+    for (int r = 0; r < 10; r++) {
+      for (int c = 0; c < 10; c++)
+      {
+        this.matrix[r][c] = 0;
+        this.board[r][c] = new JButton();
+        this.board[r][c].setBackground(Color.blue);
+        this.board[r][c].addActionListener(new Battleship.Handler1(r, c));
+        center.add(this.board[r][c]);
+      }
+    }
+    this.reset = new JButton("Reset");
+    this.reset.addActionListener(new Battleship.Handler2(null));
+    this.reset.setEnabled(false);
+    add(this.reset, "South");
+
+    placeShip();
+  }
+
+  private void placeShip() {
+    int coin = (int)(Math.random() * 2.0D + 1.0D);
+    if (coin == 1)
+    {
+      int row = (int)(Math.random() * 7.0D);
+      int col = (int)(Math.random() * 10.0D);
+      for (int x = 0; x < 4; x++)
+      {
+        this.matrix[(row + x)][col] = 1;
+      }
+    }
+    else
+    {
+      int row = (int)(Math.random() * 10.0D);
+      int col = (int)(Math.random() * 7.0D);
+      for (int x = 0; x < 4; x++)
+      {
+        this.matrix[row][(col + x)] = 1;
+      }
+    }
+  }
+
+  private class Handler2
+    implements ActionListener
+  {
+    private Handler2()
+    {
+    }
+
+    public void actionPerformed(ActionEvent e)
+    {
+      Battleship.this.hits = 0;
+      Battleship.this.torpedoes = 20;
+      for (int r = 0; r < 10; r++)
+        for (int c = 0; c < 10; c++)
+        {
+          Battleship.this.board[r][c].setEnabled(true);
+          Battleship.this.board[r][c].setBackground(Color.blue);
+          Battleship.this.matrix[r][c] = 0;
+        }
+      Battleship.this.label.setText("You have 20 torpedoes.");
+      Battleship.this.placeShip();
+      Battleship.this.reset.setEnabled(false);
+    }
+  }
+
+  private class Handler1
+    implements ActionListener
+  {
+    private int myRow;
+    private int myCol;
+
+    public Handler1(int r, int c)
+    {
+      this.myRow = r;
+      this.myCol = c;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+      Battleship.access$110(Battleship.this);
+      if (Battleship.this.matrix[this.myRow][this.myCol] == 1)
+      {
+        Battleship.this.label.setText("Hit! " + Battleship.this.torpedoes + " torpedoes remaining.");
+        Battleship.this.matrix[this.myRow][this.myCol] = 3;
+        Battleship.this.board[this.myRow][this.myCol].setEnabled(false);
+        Battleship.this.board[this.myRow][this.myCol].setBackground(Color.red);
+        Battleship.access$508(Battleship.this);
+      }
+      else
+      {
+        Battleship.this.label.setText("Miss! " + Battleship.this.torpedoes + " torpedoes remaining.");
+        Battleship.this.matrix[this.myRow][this.myCol] = 2;
+        Battleship.this.board[this.myRow][this.myCol].setEnabled(false);
+        Battleship.this.board[this.myRow][this.myCol].setBackground(Color.white);
+      }
+      if ((Battleship.this.hits == 4) || (Battleship.this.torpedoes == 0))
+      {
+        Battleship.this.reset.setEnabled(true);
+        for (int r = 0; r < 10; r++)
+          for (int c = 0; c < 10; c++)
+            Battleship.this.board[r][c].setEnabled(false);
+        if (Battleship.this.hits == 4) {
+          Battleship.this.label.setText("You sunk my battleship!");
+        }
+        else
+          for (int r = 0; r < 10; r++)
+            for (int c = 0; c < 10; c++)
+              if (Battleship.this.matrix[r][c] == 1)
+                Battleship.this.board[r][c].setBackground(Color.black);
+      }
+    }
+  }
+}
