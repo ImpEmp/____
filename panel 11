@@ -33,11 +33,11 @@ public class Panel11 extends JPanel
       JPanel south = new JPanel();
       south.setLayout(new FlowLayout());
       add(south, "South");
-      JButton button1 = new JButton("Convert");
-      this.button1.addActionListener(new Panel11.Listener1(null));
+      button1 = new JButton("Convert");
+      this.button1.addActionListener(new Panel11.Listener1());
       south.add(button1);
-      this.button2 = new JButton("Step");
-      this.button2.addActionListener(new Panel11.Listener2(null));
+      button2 = new JButton("Step");
+      this.button2.addActionListener(new Panel11.Listener2());
       south.add(this.button2);
       this.button2.setEnabled(false);
       this.label = new JLabel("");
