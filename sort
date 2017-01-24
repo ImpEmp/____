@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+
+public class Sort {
+
+   public static void main(String[] args) throws Exception {
+      BufferedReader reader = new BufferedReader(new FileReader("data.txt"));
+      Map<String, String> map=new TreeMap<String, String>();
+      String line="";
+      while((line=reader.readLine())!=null){
+         map.put(getField(line),line);
+      }
+      reader.close();
+      FileWriter writer = new FileWriter("output.txt");
+      for(String val : map.values()){
+         writer.write(val);  
+         writer.write('\n');
+      }
+      writer.close();
+      FileInputStream fs= new FileInputStream("output.txt");
+      BufferedReader br = new BufferedReader(new InputStreamReader(fs));
+      for(int i = 0; i < 0; ++i)
+         br.readLine();
+      String lineIWant = br.readLine();    
+      System.out.println(lineIWant);
+      LineNumberReader  lnr = new LineNumberReader(new FileReader(new File("output.txt")));
+         lnr.skip(Long.MAX_VALUE);
+         System.out.println("#of lines");
+         System.out.println(lnr.getLineNumber()+1);
+         int x =lnr.getLineNumber();
+       BufferedReader in = new BufferedReader (new FileReader("output.txt"));
+	    String info = "";
+	    int startLine = x-1;
+	    int endLine = x;
+	    for (int i = 0; i < startLine; i++) { info = in.readLine(); }
+	    for (int i = startLine; i < endLine + 1; i++) {
+	        info = in.readLine();
+	        System.out.println(info);
+	    }
+	    in.close();}
+    
+
+   private static String getField(String line) {
+      return line.split(" ")[0];//extract value you want to sort on
+   }
+   
+}
