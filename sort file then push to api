@@ -1,0 +1,62 @@
+// you have to use jprowlclient and jprowlAPI
+package prowl;
+import java.io.*;
+import java.util.*; 
+import net.sourceforge.prowl.api.DefaultProwlEvent;
+import net.sourceforge.prowl.api.ProwlClient;
+import net.sourceforge.prowl.api.ProwlEvent;
+import net.sourceforge.prowl.exception.ProwlException;
+public class Sort {
+   public static void main(String[] args) throws Exception{
+      BufferedReader reader = new BufferedReader(new FileReader("data.txt"));
+      Map<String, String> map=new TreeMap<String, String>();
+      String line="";
+      while((line=reader.readLine())!=null){
+         map.put(getField(line),line);}
+      reader.close();
+      FileWriter writer = new FileWriter("output.txt");
+      for(String val : map.values()){
+         writer.write(val);  
+         writer.write('\n');}
+      writer.close();
+      FileInputStream fs= new FileInputStream("output.txt");
+      BufferedReader br = new BufferedReader(new InputStreamReader(fs));
+      for(int i = 0; i < 0; ++i)
+         br.readLine();
+      String lineIWant = br.readLine();    
+      System.out.println(lineIWant);
+      LineNumberReader  lnr = new LineNumberReader(new FileReader(new File("output.txt")));
+         lnr.skip(Long.MAX_VALUE);
+         System.out.println("#of lines");
+         int adf = lnr.getLineNumber()+1;
+         System.out.println(lnr.getLineNumber()+1);
+         int x =lnr.getLineNumber();
+       BufferedReader in = new BufferedReader (new FileReader("output.txt"));
+	    String info = "";
+	    int startLine = x-1;
+	    int endLine = x;
+	    for (int i = 0; i < startLine; i++) { info = in.readLine(); }
+	    for (int i = startLine; i < endLine; i++) {
+	        info = in.readLine();
+	        System.out.println(info); }
+	    
+
+   String adf1 = String.valueOf(((int)adf));
+   String info1 = String.valueOf(info);
+   String lineIWant1 = String.valueOf(lineIWant);
+   ProwlClient c = new ProwlClient();
+	ProwlEvent e = new DefaultProwlEvent(
+	"the api", "eclipse", "event",
+	"smaller number"+lineIWant1+" #of lines "+adf1+"this is the larger "+info1, 0, "customLaunchUrl"); 
+	String message= "";
+	try {
+		message = c.pushEvent(e);
+		System.out.println(message);} 
+	catch (ProwlException e1) {
+		e1.printStackTrace();}
+	in.close();}
+	   private static String getField(String line) {
+
+		      return line.split(" ")[0];
+		   }  
+}
