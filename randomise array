@@ -1,0 +1,32 @@
+package prowl;
+import java.io.*;
+import java.util.*; 
+import net.sourceforge.prowl.api.DefaultProwlEvent;
+import net.sourceforge.prowl.api.ProwlClient;
+import net.sourceforge.prowl.api.ProwlEvent;
+import net.sourceforge.prowl.exception.ProwlException;
+
+public class RANDOMIZED {
+
+	public static void main(String[] args) throws Exception{
+	{
+	    int index;
+	    int[] array = {10,34,2,56,7,67,88,42};
+	    for(int i = array.length - 1; i > 0; i--){
+	    System.out.print(array[i]+",");
+	    }
+	    Random random = new Random();
+	    for (int i = array.length - 1; i > 0; i--)
+	    {
+	        index = random.nextInt(i + 1);
+	        if (index != i)
+	        {
+	            array[index] ^= array[i];
+	            array[i] ^= array[index];
+	            array[index] ^= array[i];
+	        }
+	      System.out.print(array[i]+",");
+	    }
+	}
+	}
+}
