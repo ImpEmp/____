@@ -19,7 +19,7 @@ public class Insertsort {
 			
 			ProwlClient c = new ProwlClient();
 			ProwlEvent e = new DefaultProwlEvent(
-			"c6ce4bd5d843d3a5450aa6c09bfc2f0ac5afe7db", "eclipse", "insert sort ",
+			"MY API", "eclipse", "insert sort ",
 					why, 0, "google.com"); 
 			String message;
 			try {
