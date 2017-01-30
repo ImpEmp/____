@@ -1,0 +1,16 @@
+for(int i = 1; i < myArray.length; i++){
+			System.out.println(myArray[i-1]);
+			String why = String.valueOf(myArray[i-1]);
+			
+			ProwlClient c = new ProwlClient();
+			ProwlEvent e = new DefaultProwlEvent(
+			"my api", "eclipse", "insert sort ",
+					why, 0, "google.com"); 
+			String message;
+			try {
+				message = c.pushEvent(e);
+				System.out.println(message);
+			} catch (ProwlException e1) {
+				e1.printStackTrace();
+			}
+		}
